@@ -1,6 +1,6 @@
-const connection = require("../config/conexion");
+import { connection } from "../config/conexion";
 
-function listaProductos(req, res) {
+export function listaProductos(req, res) {
 
     connection.query("SELECT * FROM productos", (err, datos) => {
         console.log(datos);
@@ -10,4 +10,3 @@ function listaProductos(req, res) {
 }
 
 
-module.exports = listaProductos 

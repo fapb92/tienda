@@ -1,8 +1,8 @@
-var express = require('express');
-const listaProductos = require('../controllers/tiendaController');
-var router = express.Router();
+import { Router } from 'express';
+import { listaProductos } from '../controllers/tiendaController';
+var router = Router();
 
 /* GET home page. */
 router.get('/', listaProductos);
 
-module.exports = router;
+export default router;
