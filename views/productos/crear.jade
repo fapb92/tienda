@@ -1,0 +1,18 @@
+extends layout 
+
+block content
+    form(action="/productos", method="post")
+        .form-group
+            label(for="nombre") Nombre
+            input(id="name", type="text", name="nombre").form-control
+        
+        .form-group
+            label(for="cantidad") Cantidad
+            input(id="stock", type="text", name="cantidad").form-control
+
+        .form-group
+            label(for="precio") Precio
+            input(id="price", type="text", name="precio").form-control
+        
+        button(type="submit").btn.btn-primary Crear
+        
