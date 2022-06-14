@@ -1,23 +1,25 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous")
+extends layout
 
-  body
-    table.table.table-light
-        thead.thead-light
-            tr
-                th #
-                th ID
-                th Nombre
-                th Cantidad
-                th Precio
-        tbody
-            tr
-                td  - 
-                td  - 
-                td  - 
-                td  - 
-                td  - 
+block content
+    .container
+        a(href="productos/crear", title="Crear producto nuevo", type="button").btn.btn-primary Crear producto nuevo
+        br
+        br
+        table.table.table-light
+            thead.thead-light
+                tr
+                    th #
+                    th ID
+                    th Nombre
+                    th Cantidad
+                    th Precio
+                    th Acciones
+            tbody
+                each producto, index in products
+                    tr
+                        td=index
+                        td=producto.id
+                        td=producto.nombre
+                        td=producto.cantidad
+                        td=producto.precio
+                        td Editar | Borrar
