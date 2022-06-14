@@ -1,13 +1,21 @@
 import { connection } from "../config/conexion";
-import { obtenerProductos } from "../models/productos";
+import { insertarProductos, obtenerProductos } from "../models/productos";
 
-export function listaProductos(req, res) {
+export function indexProductos(req, res) {
 
     obtenerProductos(connection, (error, datos) => {
-        res.render('productos/index', { title: 'Tieda Express' });
+        res.render('productos/index', { title: 'Tienda virtual', products: datos });
     })
-
-
 }
 
+export function crearProductos(req, res) {
+    res.render('productos/crear')
+}
+
+export function guardarProductos(req, res) {
+    insertarProductos(connection, req.body, (error) => {
+        res.redirect("/productos")
+    })
+
+}
 

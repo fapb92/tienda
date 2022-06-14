@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { listaProductos } from '../controllers/tiendaController';
+import { crearProductos, guardarProductos, indexProductos } from '../controllers/tiendaController';
 var router = Router();
 
 /* GET home page. */
-router.get('/', listaProductos);
+router.get('/', indexProductos);
+router.get('/crear', crearProductos)
+router.post('/', guardarProductos)
 
 export default router;
