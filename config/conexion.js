@@ -6,11 +6,17 @@ export const connection = createConnection({
     database: 'tiendavirtual'
 });
 
-connection.connect((err) => {
-    if (!err) {
-        console.log('Conexión establecida');
-    } else {
-        console.log('Problemas con la conexión');
-    }
-})
+export async function connectDB() {
+    let conDB;
+    connection.connect((err) => { conDB = !err })
+    return conDB
+}
+
+export async function disconnectDB() {
+    let conDB
+    connection.end((err) => { conDB = !err })
+    return conDB
+}
+
+
 
