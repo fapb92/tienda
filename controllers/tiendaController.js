@@ -1,11 +1,12 @@
 import { connection } from "../config/conexion";
+import { obtenerProductos } from "../models/productos";
 
 export function listaProductos(req, res) {
 
-    connection.query("SELECT * FROM productos", (err, datos) => {
-        console.log(datos);
+    obtenerProductos(connection, (error, datos) => {
+        res.render('productos/index', { title: 'Tieda Express' });
     })
-    res.render('index', { title: 'Tieda Express' });
+
 
 }
 
