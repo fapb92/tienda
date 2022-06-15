@@ -1,5 +1,5 @@
 import { connection } from "../config/conexion";
-import { borrarProducto, insertarProductos, obtenerDatosPorId, obtenerProductos } from "../models/productos";
+import { borrarProducto, insertarProductos, modificarProductos, obtenerDatosPorId, obtenerProductos } from "../models/productos";
 
 export function indexProductos(req, res) {
 
@@ -31,4 +31,10 @@ export function editarProductos(req, res) {
         res.render('productos/editar', { registro: registros[0] })
     })
 
+}
+
+export function actualizarProducto(req, res) {
+    modificarProductos(connection, req.body, (err) => {
+        res.redirect("/productos")
+    })
 }

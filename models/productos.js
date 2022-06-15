@@ -15,6 +15,6 @@ export function obtenerDatosPorId(conexion, id, funcion) {
     conexion.query("SELECT * FROM productos WHERE id=?", [id], funcion)
 }
 
-export function modificarProductos(conexion, id, funcion) {
-
+export function modificarProductos(conexion, { id, nombre, cantidad, precio }, funcion) {
+    conexion.query("UPDATE productos SET nombre = ?, cantidad = ?, precio = ? WHERE id = ?", [nombre, cantidad, precio, id], funcion)
 }

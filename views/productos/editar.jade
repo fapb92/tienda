@@ -1,7 +1,8 @@
 extends layout 
 
 block content
-    form(action="/", method="post")
+    form(action="../actualizar", method="post")
+        input(type="hidden", name="id" value=registro.id)
         .form-group
             label(for="nombre") Nombre
             input(id="name", type="text", name="nombre", value=registro.nombre).form-control
