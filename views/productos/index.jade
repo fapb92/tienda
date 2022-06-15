@@ -9,7 +9,6 @@ block content
             thead.thead-light
                 tr
                     th #
-                    th ID
                     th Nombre
                     th Cantidad
                     th Precio
@@ -17,9 +16,16 @@ block content
             tbody
                 each producto, index in products
                     tr
-                        td=index
-                        td=producto.id
+                        td=index+1
                         td=producto.nombre
                         td=producto.cantidad
                         td=producto.precio
-                        td Editar | Borrar
+                        td
+                            div(role="group").btn-group-vertical
+                                form(action=`/productos/editar/${producto.id}`, method="get").form-inline
+                                    button(type="submit").btn.btn-warning Editar
+                            div(role="group").btn-group-vertical
+                                form(action=`/productos/eliminar/${producto.id}`, method="post").form-inline
+                                    button(type="submit").btn.btn-danger Borrar
+                                    
+                            
