@@ -4,7 +4,12 @@ import { borrarProducto, insertarProductos, modificarProductos, obtenerDatosPorI
 export function indexProductos(req, res) {
 
     obtenerProductos(connection, (error, datos) => {
+        if (error) {
+            res.status(503).send('service unavailable')
+            return
+        }
         res.render('productos/index', { title: 'Tienda virtual', products: datos });
+
     })
 }
 

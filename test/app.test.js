@@ -1,6 +1,6 @@
 import request from "supertest";
 import app from "../app";
-import { connectDB, disconnectDB } from "../config/conexion";
+import { connectDB, connection, disconnectDB } from "../config/conexion";
 
 describe("testing routes", () => {
     beforeAll(async () => {
@@ -25,3 +25,17 @@ describe("testing routes", () => {
     })
 
 })
+
+describe('should response with error', () => {
+    beforeAll(async () => {
+        if (connection.state === 'authenticated') {
+            await disconnectDB()
+        }
+    });
+
+    test('should respond with 503 status code', async () => {
+        const response = await request(app).get('/productos').send()
+        expect(response.statusCode).toBe(503)
+        expect(response.headers['content-type']).toEqual(expect.stringContaining("html"))
+    })
+});

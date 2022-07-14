@@ -7,16 +7,14 @@ export const connection = createConnection({
 });
 
 export async function connectDB() {
-    let conDB;
-    connection.connect((err) => { conDB = !err })
-    return conDB
+    connection.connect()
+
 }
 
 export async function disconnectDB() {
-    let conDB
-    connection.end((err) => { conDB = !err })
-    return conDB
+    connection.destroy()
 }
+
 
 
 

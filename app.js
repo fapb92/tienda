@@ -9,7 +9,7 @@ import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import productosRouter from './routes/productos'
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', join(__dirname, 'views'));

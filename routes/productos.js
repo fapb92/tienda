@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { actualizarProducto, crearProductos, editarProductos, eliminarProductos, guardarProductos, indexProductos } from '../controllers/tiendaController';
-var router = Router();
+const router = Router();
 
 /* GET home page. */
 router.get('/', indexProductos);
